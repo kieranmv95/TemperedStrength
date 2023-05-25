@@ -48,7 +48,11 @@ const Home = ({ posts }: HomeProps) => {
             Latest Articles
           </h2>
           {posts.map((post) => (
-            <Link key={post.slug} href={`/articles/${post.slug}`}>
+            <Link
+              key={post.slug}
+              href={`/articles/${post.slug}`}
+              className="mb-6 block"
+            >
               <h3 className="text-lg font-bold mb-2">{post.title}</h3>
               <Pill condensed={true}>{post.category}</Pill>
               <p className="inline-block pl-2">

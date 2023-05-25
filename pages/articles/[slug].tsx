@@ -4,6 +4,7 @@ import { ParsedUrlQuery } from "querystring";
 import { IArticle, getAllPosts, getPost } from "@/utils/contentful";
 import { RichTextRenderer, Pill } from "@/components";
 import { format } from "date-fns";
+import Image from "next/image";
 
 type ArticleProps = {
   post: IArticle;
@@ -13,22 +14,43 @@ const Article = ({ post }: ArticleProps) => {
   return (
     <>
       <Head>
-        <title>Tempered Strength | Articles</title>
+        {/* TODO: Configure images for articles and use the below as a fallback */}
+        <title>{`Tempered Strength ${post.title}`}</title>
+
         <meta name="description" content={post.description} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.description} />
+        <meta property="article:published_time" content={post.date} />
+        <meta property="article:author" content="Kieran Venison" />
+
         <meta
           property="og:url"
           content={`https://www.temperedstrength.com/articles/${post.slug}`}
         />
-        <meta property="og:type" content="article" />
-        {/* TODO: Configure images for articles and use the below as a fallback */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.description} />
         <meta
           property="og:image"
-          content="https://www.temperedstrength.com/images/eleiko.png"
+          content={
+            post.heroImage?.url ||
+            "https://www.temperedstrength.com/images/eleiko.png"
+          }
         />
-        <meta property="article:published_time" content={post.date} />
-        <meta property="article:author" content="Kieran Venison" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="temperedstrength.com" />
+        <meta
+          property="twitter:url"
+          content={`https://www.temperedstrength.com/articles/${post.slug}`}
+        />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.description} />
+        <meta
+          name="twitter:image"
+          content={
+            post.heroImage?.url ||
+            "https://www.temperedstrength.com/images/eleiko.png"
+          }
+        />
       </Head>
       <main>
         <div className="flex items-center justify-center bg-slate-900 text-white text-center overflow-hidden relative">
@@ -38,6 +60,16 @@ const Article = ({ post }: ArticleProps) => {
               {post.description}
             </p>
           </div>
+          {post.heroImage?.url && (
+            <Image
+              className="object-cover h-full w-full absolute w-full z-0 opacity-40"
+              alt={`${post.title} hero image`}
+              src={post.heroImage.url}
+              width={1000}
+              height={500}
+              quality={75}
+            />
+          )}
         </div>
         <div className="py-12 px-6 container space-y-[1.25rem] lg:py-16 lg:text-md md:px-4">
           <div>

@@ -43,7 +43,11 @@ const Articles = ({ posts }: ArticleProps) => {
         </div>
         <div className="py-12 px-6 container space-y-[1.25rem] lg:py-16 lg:text-md md:px-4">
           {posts.map((post) => (
-            <Link key={post.slug} href={`/articles/${post.slug}`}>
+            <Link
+              key={post.slug}
+              href={`/articles/${post.slug}`}
+              className="mb-6 block"
+            >
               <h3 className="text-lg font-bold mb-2">{post.title}</h3>
               <Pill condensed={true}>{post.category}</Pill>
               <p className="inline-block pl-2">

@@ -20,7 +20,7 @@ const POST_GRAPHQL_FIELDS = `
     title
     date
     heroImage {
-        url
+      url
     }
     description
     slug
@@ -91,10 +91,21 @@ export const getPost = async (slug: string): Promise<IArticle> => {
             json
             links {
               entries {
-                inline {
+                block {
                   sys {
                     id
                   }
+                }
+              }
+              assets {
+                block {
+                  sys {
+                    id
+                  }
+                  url
+                  title
+                  width
+                  height
                 }
               }
             }
