@@ -2,12 +2,12 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { format } from "date-fns";
-import { IArticleList, getLatestPosts } from "@/utils/contentful";
+import { IArticleSummary, getLatestPosts } from "@/utils/contentful";
 import { Pill } from "@/components";
 import Link from "next/link";
 
 type HomeProps = {
-  posts: IArticleList[];
+  posts: IArticleSummary[];
 };
 
 const Home = ({ posts }: HomeProps) => {

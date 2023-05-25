@@ -1,4 +1,4 @@
-export type IArticleList = {
+export type IArticleSummary = {
   title: string;
   date: string;
   heroImage?: {
@@ -9,7 +9,7 @@ export type IArticleList = {
   category: string;
 };
 
-export type IArticle = IArticleList & {
+export type IArticle = IArticleSummary & {
   body: {
     json: any;
     links: any;
@@ -47,13 +47,13 @@ const extractPost = (fetchResponse: any): IArticle => {
   return fetchResponse?.data?.blogPostCollection?.items?.[0];
 };
 
-const extractPostEntries = (fetchResponse: any): IArticleList[] => {
+const extractPostEntries = (fetchResponse: any): IArticleSummary[] => {
   return fetchResponse?.data?.blogPostCollection?.items;
 };
 
 export const getLatestPosts = async (
   limit: number
-): Promise<IArticleList[]> => {
+): Promise<IArticleSummary[]> => {
   const entries = await fetchGraphQL(
     `query {
       blogPostCollection(order: date_DESC, limit: ${limit}) {
@@ -67,7 +67,7 @@ export const getLatestPosts = async (
   return extractPostEntries(entries);
 };
 
-export const getAllPosts = async (): Promise<IArticleList[]> => {
+export const getAllPosts = async (): Promise<IArticleSummary[]> => {
   const entries = await fetchGraphQL(
     `query {
       blogPostCollection(order: date_DESC) {

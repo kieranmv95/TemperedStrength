@@ -1,5 +1,5 @@
 import { Pill } from "@/components";
-import { IArticleList, getAllPosts, getLatestPosts } from "@/utils/contentful";
+import { IArticleSummary, getAllPosts } from "@/utils/contentful";
 import { format } from "date-fns";
 import { GetStaticProps } from "next";
 import Head from "next/head";
@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 type ArticleProps = {
-  posts: IArticleList[];
+  posts: IArticleSummary[];
 };
 
 const Articles = ({ posts }: ArticleProps) => {
