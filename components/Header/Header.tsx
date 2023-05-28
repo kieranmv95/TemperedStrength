@@ -28,7 +28,7 @@ const NavIcon = ({
 const Header = () => {
   const [navOpen, toggleNav] = useState(false);
   const router = useRouter();
-  
+
   useEffect(() => {
     const handleRouteChange = () => toggleNav(false);
 
@@ -37,7 +37,7 @@ const Header = () => {
     return () => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
-  }, [])
+  }, [router.events]);
 
   return (
     <header>
