@@ -1,37 +1,27 @@
-import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { format } from "date-fns";
-import { IArticleSummary, getLatestPosts } from "@/utils/contentful";
-import { Pill } from "@/components";
 import Link from "next/link";
 
-type HomeProps = {
-  posts: IArticleSummary[];
-};
-
-const Home = ({ posts }: HomeProps) => {
+const Workouts = () => {
   return (
     <>
       <Head>
-        <title>Tempered Strength | Forged in Resilience</title>
+        <title>Tempered Strength | Workouts</title>
         <meta
           name="description"
-          content="Welcome to Tempered Strength, the ultimate fitness destination offering honest reviews, engaging content, and innovative workout programs to enhance your strength, endurance, and overall well-being. Join us on this transformative journey to achieve your fitness goals and unlock your true potential."
+          content="Discover a treasure trove of curated workouts."
         />
         <meta
           name="keywords"
-          content="fitness resource, boost strength, enhance endurance, honest reviews, engaging content, workout programs, transformative journey, achieve fitness goals, unlock true potential"
+          content="Workout routines, Fitness inspiration, Exercise tips, Fitness knowledge, Body transformation, Healthy lifestyle, Exercise guides"
         />
       </Head>
       <main>
         <div className="flex items-center h-[50vh] justify-center bg-slate-900 text-white text-center overflow-hidden relative">
           <div className="relative z-10">
-            <h1 className="font-bold text-3xl md:text-5xl">
-              TEMPERED STRENGTH
-            </h1>
+            <h1 className="font-bold text-3xl md:text-5xl">Workouts</h1>
             <p className="inline-block md:text-lg pt-2 pl-6 pr-6 mt-2 md:pt-3 md:pl-8 md:pr-8 md:mt-4 border-t">
-              Forged in Resilience
+              The best workouts for all your needs
             </p>
           </div>
           <Image
@@ -43,10 +33,8 @@ const Home = ({ posts }: HomeProps) => {
             quality={75}
           />
         </div>
-        <div className="py-12 px-6 container lg:py-16 lg:text-md md:px-4">
-          <h2 className="text-2xl font-bold md:text-2xl lg:text-3xl mb-6">
-            Workouts
-          </h2>
+        <div className="py-12 px-6 container space-y-[1.25rem] lg:py-16 lg:text-md md:px-4">
+          <h3 className="text-4xl font-bold mb-4">Wods</h3>
           <div className="shadow-lg rounded-md w-full inline-block md:w-auto mb-6 overflow-hidden">
             <div className="p-5 bg-zinc-700 text-white">
               <p>
@@ -85,37 +73,10 @@ const Home = ({ posts }: HomeProps) => {
               View Details
             </Link>
           </div>
-          <h2 className="text-2xl font-bold md:text-2xl lg:text-3xl mb-6">
-            Latest Articles
-          </h2>
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/articles/${post.slug}`}
-              className="mb-6 block"
-            >
-              <h3 className="text-lg font-bold mb-2">{post.title}</h3>
-              <Pill condensed={true}>{post.category}</Pill>
-              <p className="inline-block pl-2">
-                {format(new Date(post.date), "yyyy-MM-dd")}
-              </p>
-              <p className="mt-2">{post.description}</p>
-            </Link>
-          ))}
         </div>
       </main>
     </>
   );
 };
 
-export default Home;
-
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getLatestPosts(3);
-
-  return {
-    props: {
-      posts,
-    },
-  };
-};
+export default Workouts;
