@@ -1,3 +1,4 @@
+import { WorkoutCard } from "@/components";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,13 +36,8 @@ const Workouts = () => {
         </div>
         <div className="py-12 px-6 container space-y-[1.25rem] lg:py-16 lg:text-md md:px-4">
           <h3 className="text-4xl font-bold mb-4">Wods</h3>
-          <div className="shadow-lg rounded-md w-full inline-block md:w-auto mb-6 overflow-hidden">
-            <div className="p-5 bg-zinc-700 text-white">
-              <p>
-                <b>MURPH</b>
-              </p>
-            </div>
-            <div className="p-5">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <WorkoutCard title="Murph" link="/workouts/murph">
               <p>
                 <b>For time</b>, wearing a (
                 <span className="text-red-500 font-bold">10kg</span>/
@@ -65,13 +61,26 @@ const Workouts = () => {
                   <span className="text-red-500 font-bold">1</span> mile run
                 </li>
               </ul>
-            </div>
-            <Link
-              className="w-full inline-block text-center bg-yellow-400 p-3"
-              href="/workouts/murph"
-            >
-              View Details
-            </Link>
+            </WorkoutCard>
+            <WorkoutCard title="TEC 23.1" link="/workouts/tec-231">
+              <p>
+                <b>For time</b>{" "}
+                <span className="text-red-500 font-bold">7</span> min time cap
+              </p>
+              <ul className="list-disc pl-6">
+                <li className="mt-1">
+                  <span className="text-red-500 font-bold">30</span> cal row
+                </li>
+                <li className="mt-1">
+                  <span className="text-red-500 font-bold">30</span> Deadlifts{" "}
+                  <span className="text-red-500 font-bold">(100/70kg)</span>
+                </li>
+                <li className="mt-1">
+                  <span className="text-red-500 font-bold">30</span> Overbar
+                  burpees
+                </li>
+              </ul>
+            </WorkoutCard>
           </div>
         </div>
       </main>
