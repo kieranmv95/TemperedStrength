@@ -47,7 +47,7 @@ const Home = ({ posts }: HomeProps) => {
           <h2 className="text-2xl font-bold md:text-2xl lg:text-3xl mb-6">
             Workouts
           </h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
             <WorkoutCard title="Murph" link="/workouts/murph">
               <p>
                 <b>For time</b>, wearing a (
