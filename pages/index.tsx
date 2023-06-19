@@ -2,15 +2,21 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { format } from "date-fns";
-import { IArticleSummary, getLatestPosts } from "@/utils/contentful";
+import {
+  IArticleSummary,
+  IQuote,
+  getLatestPosts,
+  getLatestQuotes,
+} from "@/utils/contentful";
 import { Pill, WorkoutCard } from "@/components";
 import Link from "next/link";
 
 type HomeProps = {
   posts: IArticleSummary[];
+  quotes: IQuote[];
 };
 
-const Home = ({ posts }: HomeProps) => {
+const Home = ({ posts, quotes }: HomeProps) => {
   return (
     <>
       <Head>
@@ -45,7 +51,24 @@ const Home = ({ posts }: HomeProps) => {
         </div>
         <div className="py-12 px-6 container lg:py-16 lg:text-md md:px-4">
           <h2 className="text-2xl font-bold md:text-2xl lg:text-3xl mb-6">
-            Workouts
+            Latest Quotes
+          </h2>
+          <div className="grid gap-6 grid-cols-2 lg:grid-cols-3 mb-6">
+            {quotes.map((quote) => (
+              <div key={quote.quote}>
+                <Image
+                  className="object-cover"
+                  alt={`${quote.author} - ${quote.author}`}
+                  src={quote.image.url}
+                  width={500}
+                  height={500}
+                  quality={75}  
+                />
+              </div>
+            ))}
+          </div>
+          <h2 className="text-2xl font-bold md:text-2xl lg:text-3xl mb-6">
+            Latest Workouts
           </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
             <WorkoutCard title="Murph" link="/workouts/murph">
@@ -120,10 +143,12 @@ export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getLatestPosts(3);
+  const quotes = await getLatestQuotes(3);
 
   return {
     props: {
       posts,
+      quotes,
     },
   };
 };

@@ -9,6 +9,14 @@ export type IArticleSummary = {
   category: string;
 };
 
+export type IQuote = {
+  image: {
+    url: string;
+  };
+  quote: string;
+  author: string;
+};
+
 export type IArticle = IArticleSummary & {
   body: {
     json: any;
@@ -25,6 +33,14 @@ const POST_GRAPHQL_FIELDS = `
     description
     slug
     category
+`;
+
+const QUOTE_GRAPHQL_FIELDS = `
+  image {
+    url
+  }
+  quote
+  author
 `;
 
 const fetchGraphQL = async (query: string) => {
@@ -116,4 +132,32 @@ export const getPost = async (slug: string): Promise<IArticle> => {
   );
 
   return extractPost(entry);
+};
+
+export const getLatestQuotes = async (limit: number): Promise<IQuote[]> => {
+  const entries = await fetchGraphQL(
+    `query {
+      quoteCollection(limit: ${limit}) {
+        items {
+          ${QUOTE_GRAPHQL_FIELDS}
+        }
+      }
+    }`
+  );
+
+  return entries?.data?.quoteCollection?.items;
+};
+
+export const getAllQuotes = async (): Promise<IQuote[]> => {
+  const entries = await fetchGraphQL(
+    `query {
+      quoteCollection {
+        items {
+          ${QUOTE_GRAPHQL_FIELDS}
+        }
+      }
+    }`
+  );
+
+  return entries?.data?.quoteCollection?.items;
 };

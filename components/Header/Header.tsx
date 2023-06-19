@@ -71,6 +71,12 @@ const Header = () => {
             >
               Workouts
             </Link>
+            <Link
+              href="/quotes"
+              className="block mt-4 lg:inline-block lg:mt-0 mr-4"
+            >
+              Quotes
+            </Link>
           </div>
         </div>
       </nav>
