@@ -1,3 +1,4 @@
+import { WorkoutCard } from "@/components";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,13 +54,8 @@ const Workouts = () => {
             </li>
           </ul>
 
-          <div className="shadow-lg rounded-md w-full inline-block md:w-auto mb-6 overflow-hidden">
-            <div className="p-5 bg-zinc-700 text-white">
-              <p>
-                <b>TEC 23.1</b>
-              </p>
-            </div>
-            <div className="p-5">
+          <div className="w-full inline-block md:w-auto mb-6">
+            <WorkoutCard title="TEC 23.1">
               <ul className="list-disc pl-6">
                 <li className="mt-1">
                   <span className="text-red-500 font-bold">30</span> cal row
@@ -73,7 +69,7 @@ const Workouts = () => {
                   burpees
                 </li>
               </ul>
-            </div>
+            </WorkoutCard>
           </div>
 
           <h3 className="text-4xl font-bold mb-4">Breakdown</h3>

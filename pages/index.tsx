@@ -31,7 +31,7 @@ const Home = ({ posts, quotes }: HomeProps) => {
         />
       </Head>
       <main>
-        <div className="flex items-center h-[50vh] justify-center bg-slate-900 text-white text-center overflow-hidden relative">
+        <div className="flex items-center h-[30vh] md:h-[50vh] justify-center bg-slate-900 text-white text-center overflow-hidden relative">
           <div className="relative z-10">
             <h1 className="font-bold text-3xl md:text-5xl">
               TEMPERED STRENGTH
@@ -57,12 +57,12 @@ const Home = ({ posts, quotes }: HomeProps) => {
             {quotes.map((quote) => (
               <div key={quote.quote}>
                 <Image
-                  className="object-cover"
+                  className="object-cover shadow-lg"
                   alt={`${quote.author} - ${quote.author}`}
                   src={quote.image.url}
                   width={500}
                   height={500}
-                  quality={75}  
+                  quality={75}
                 />
               </div>
             ))}

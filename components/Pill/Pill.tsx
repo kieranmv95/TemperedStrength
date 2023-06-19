@@ -8,7 +8,7 @@ type PillProps = {
 const Pill = ({ children, condensed }: PillProps) => (
   <div
     className={cx(
-      `inline-block bg-yellow-400 rounded-full font-semibold`,
+      `inline-block bg-[#57a1e8] rounded-full font-semibold text-white`,
       condensed ? `text-sm px-3 py-1` : `text-base px-4 py-1`
     )}
   >

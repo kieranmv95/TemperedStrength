@@ -1,3 +1,4 @@
+import { WorkoutCard } from "@/components";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -54,13 +55,8 @@ const Workouts = () => {
             </li>
           </ul>
 
-          <div className="shadow-lg rounded-md w-full inline-block md:w-auto mb-6 overflow-hidden">
-            <div className="p-5 bg-zinc-700 text-white">
-              <p>
-                <b>MURPH</b>
-              </p>
-            </div>
-            <div className="p-5">
+          <div className="w-full inline-block md:w-auto mb-6">
+            <WorkoutCard title="Murph">
               <p>
                 <b>For time</b>, wearing a (
                 <span className="text-red-500 font-bold">10kg</span>/
@@ -84,7 +80,7 @@ const Workouts = () => {
                   <span className="text-red-500 font-bold">1</span> mile run
                 </li>
               </ul>
-            </div>
+            </WorkoutCard>
           </div>
 
           <h3 className="text-4xl font-bold mb-4">Breakdown</h3>
