@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import cx from "classnames";
+import { useAppSelector } from "@/hooks/redux";
 
 const NavIcon = ({
   toggleNav,
@@ -28,6 +29,7 @@ const NavIcon = ({
 const Header = () => {
   const [navOpen, toggleNav] = useState(false);
   const router = useRouter();
+  const appArea = useAppSelector(({ featureToggle }) => featureToggle.appArea);
 
   useEffect(() => {
     const handleRouteChange = () => toggleNav(false);
@@ -41,7 +43,7 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="flex items-center justify-between flex-wrap bg-zinc-800 p-6 text-white">
+      <nav className="flex items-center justify-between flex-wrap bg-main p-6 text-white">
         <div className="flex items-center flex-shrink-0 mr-6">
           <Link href="/" className="font-bold">
             TemperedStrength
@@ -77,6 +79,14 @@ const Header = () => {
             >
               Quotes
             </Link>
+            {appArea && (
+              <Link
+                href="/app"
+                className="block mt-4 lg:inline-block lg:mt-0 mr-4"
+              >
+                App
+              </Link>
+            )}
           </div>
         </div>
       </nav>

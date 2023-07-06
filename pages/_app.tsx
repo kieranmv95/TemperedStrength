@@ -1,7 +1,9 @@
 import type { AppProps } from "next/app";
 import Script from "next/script";
+import { Provider } from "react-redux";
 import { Open_Sans } from "next/font/google";
 import { Header, Footer } from "@/components";
+import store from "../redux/store";
 
 import "@/styles/globals.css";
 
@@ -23,11 +25,13 @@ export default function App({ Component, pageProps }: AppProps) {
         gtag('config', 'G-KBJ19TPWHW');
       `}
       </Script>
-      <div className={font.className}>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-      </div>
+      <Provider store={store}>
+        <div className={font.className}>
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </div>
+      </Provider>
     </>
   );
 }
