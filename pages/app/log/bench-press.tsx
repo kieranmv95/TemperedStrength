@@ -113,7 +113,7 @@ const BenchPress = () => {
                   />
                   <label
                     htmlFor="default-checkbox"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    className="ml-2 text-sm font-medium"
                   >
                     Show increments of 5%
                   </label>
@@ -289,7 +289,7 @@ const BenchPress = () => {
                       User personal best
                     </h2>
                     <div>
-                      <label htmlFor="benchPress">Bench Press 1RM</label>
+                      <label htmlFor="benchPress">Bench Press 1RM (KG)</label>
                       <input
                         id="benchPress"
                         type="number"

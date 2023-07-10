@@ -113,7 +113,7 @@ const BackSquat = () => {
                   />
                   <label
                     htmlFor="default-checkbox"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    className="ml-2 text-sm font-medium"
                   >
                     Show increments of 5%
                   </label>
@@ -289,7 +289,7 @@ const BackSquat = () => {
                       User personal best
                     </h2>
                     <div>
-                      <label htmlFor="backSquat">Back Squat 1RM</label>
+                      <label htmlFor="backSquat">Back Squat 1RM (KG)</label>
                       <input
                         id="backSquat"
                         type="number"
