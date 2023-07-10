@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const featureToggleSlice = createSlice({
   name: "featureToggle",
-  initialState: { 
+  initialState: {
     userProfile: false,
-    appArea: false,
+    programs: false,
   },
   reducers: {},
 });

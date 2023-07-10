@@ -3,9 +3,10 @@ import Script from "next/script";
 import { Provider } from "react-redux";
 import { Open_Sans } from "next/font/google";
 import { Header, Footer } from "@/components";
-import store from "../redux/store";
+import store, { persistor } from "../redux/store";
 
 import "@/styles/globals.css";
+import { PersistGate } from "redux-persist/integration/react";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
@@ -26,11 +27,13 @@ export default function App({ Component, pageProps }: AppProps) {
       `}
       </Script>
       <Provider store={store}>
-        <div className={font.className}>
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
-        </div>
+        <PersistGate loading={null} persistor={persistor}>
+          <div className={font.className}>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </div>
+        </PersistGate>
       </Provider>
     </>
   );
