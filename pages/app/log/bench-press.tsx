@@ -36,13 +36,13 @@ const BenchPress = () => {
         <title>Tempered Strength | App</title>
       </Head>
       <main>
-        <div className="flex items-center h-[30vh] justify-center bg-slate-900 text-white text-center overflow-hidden relative">
+        <div className="flex items-center justify-center bg-slate-900 text-white text-center overflow-hidden relative py-8 lg:py-0 lg:h-[20vh]">
           <div className="relative z-10">
             <h1 className="font-bold text-3xl md:text-5xl">
               TEMPERED STRENGTH
             </h1>
             <p className="inline-block md:text-lg pt-2 pl-6 pr-6 mt-2 md:pt-3 md:pl-8 md:pr-8 md:mt-4 border-t">
-              Forged in Resilience
+              Members Area
             </p>
           </div>
           <Image
