@@ -6,7 +6,9 @@ import { useAppSelector } from "@/hooks/redux";
 import useUser from "@/hooks/useUser";
 
 const App = () => {
-  const [gridView, setGridView] = useState<"programs" | "1rm">("1rm");
+  const [gridView, setGridView] = useState<"programs" | "1rm" | "roadmap">(
+    "1rm"
+  );
   const { userProfile } = useUser();
 
   const programsToggle = useAppSelector(
@@ -42,7 +44,7 @@ const App = () => {
           />
         </div>
         <div className="py-12 px-4 container lg:py-16 lg:text-md">
-          <div className="grid grid-cols-[auto_1fr] gap-2 items-center">
+          <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
             <div className="grid w-[5.25rem] h-[5.25rem] bg-main rounded-full text-center font-bold text-white content-center text-4xl">
               {userProfile.user?.name.substring(0, 1)}
             </div>
@@ -72,6 +74,14 @@ const App = () => {
               onClick={() => setGridView("1rm")}
             >
               1RM Tracker
+            </button>
+            <button
+              className={`text-lg lg:text-3xl font-bold ${
+                gridView !== "roadmap" && "text-gray-400"
+              }`}
+              onClick={() => setGridView("roadmap")}
+            >
+              Roadmap
             </button>
             {programsToggle && (
               <button
@@ -116,6 +126,79 @@ const App = () => {
               ))}
               <div className="bg-gray-200 rounded-md overflow-hidden text-center items-center grid p-4">
                 <p className="font-bold">More coming soon</p>
+              </div>
+            </div>
+          )}
+
+          {gridView === "roadmap" && (
+            <div className="grid gap-3 mt-4">
+              <h2 className="font-bold text-lg">BETA</h2>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-purple-500 text-white text-sm">
+                  Released
+                </span>
+                BETA user profiles
+              </div>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-purple-500 text-white text-sm">
+                  Released
+                </span>
+                Big lifts log
+              </div>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-purple-500 text-white text-sm">
+                  Released
+                </span>
+                Lift % breakdown
+              </div>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-lime-500 text-sm">
+                  In Progress
+                </span>
+                Programs
+              </div>
+              <h2 className="font-bold text-lg">V1</h2>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-orange-500 text-sm">
+                  Todo
+                </span>
+                User Accounts with real authentication
+              </div>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-orange-500 text-sm">
+                  Todo
+                </span>
+                Additional Exercises Tracking
+              </div>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-orange-500 text-sm">
+                  Todo
+                </span>
+                Fitness Resources Area
+              </div>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-orange-500 text-sm">
+                  Todo
+                </span>
+                Workouts Builder
+              </div>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-orange-500 text-sm">
+                  Todo
+                </span>
+                Friends
+              </div>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-orange-500 text-sm">
+                  Todo
+                </span>
+                Public Profile
+              </div>
+              <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
+                <span className="font-bold p-2 rounded bg-orange-500 text-sm">
+                  Todo
+                </span>
+                Comp Finder
               </div>
             </div>
           )}
