@@ -7,7 +7,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { updateOneRepMax } from "@/redux/slice/userProfile";
 import Link from "next/link";
-import { BreakdownGrid } from "@/components";
+import { BackButton, BreakdownGrid } from "@/components";
 
 const BackSquat = () => {
   const { userProfile } = useUser();
@@ -79,23 +79,17 @@ const BackSquat = () => {
           </div>
 
           <div className="mt-7">
-            <Link href="/app" className="font-bold py-3 inline-block">
-              &#8592; Back
-            </Link>
-            <h1 className="text-lg lg:text-3xl font-bold lg:mb-2">
-              Back Squat
-            </h1>
-            <h2 className="text-md lg:text-2xl font-bold">
-              1RM: {oneRepMax ? <>{oneRepMax}kg</> : "Log your first!"}
-            </h2>
-            <div className="mt-4">
+            <BackButton />
+            <h1 className="text-lg lg:text-3xl font-bold mb-3">Back Squat</h1>
+            <h2 className="text-md lg:text-2xl font-bold flex gap-3 items-center">
+              1RM {oneRepMax ? <>{oneRepMax}kg</> : "Log your first!"}
               <button
-                className="bg-main text-white rounded px-3 py-2 inline-block mt-1 leading-none"
+                className="bg-main text-white rounded px-3 py-2 inline leading-none text-xs lg:text-sm font-normal"
                 onClick={() => setShowModal(!showModal)}
               >
-                {oneRepMax ? "Update" : "Log your first!"}
+                {oneRepMax ? "Update" : "Log"}
               </button>
-            </div>
+            </h2>
             {oneRepMax && (
               <BreakdownGrid
                 title="Breakdown of your 1RM"
