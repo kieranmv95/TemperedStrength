@@ -73,7 +73,7 @@ const App = () => {
               }`}
               onClick={() => setGridView("1rm")}
             >
-              1RM Tracker
+              Exercises
             </button>
             <button
               className={`text-lg lg:text-3xl font-bold ${
@@ -118,7 +118,7 @@ const App = () => {
                   </div>
                   <Link
                     className="bg-main-light inline-block w-full p-2 text-center"
-                    href={`/app/log/${lift.slug}`}
+                    href={`/app/exercises/${lift.slug}`}
                   >
                     View
                   </Link>

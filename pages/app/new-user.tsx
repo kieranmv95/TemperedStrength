@@ -90,7 +90,7 @@ const NewUser = () => {
                       slug: "deadlift",
                     },
                     {
-                      name: "Squat",
+                      name: "Back Squat",
                       weight: values.squat || null,
                       slug: "back-squat",
                     },
@@ -144,7 +144,7 @@ const NewUser = () => {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="squat">Squat</label>
+                    <label htmlFor="squat">Back Squat</label>
                     <input
                       id="squat"
                       type="number"
