@@ -7,7 +7,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { updateOneRepMax } from "@/redux/slice/userProfile";
 import Link from "next/link";
-import { BackButton, BreakdownGrid } from "@/components";
+import { BackButton, BreakdownGrid, UserProfileCard } from "@/components";
 
 const BenchPress = () => {
   const { userProfile } = useUser();
@@ -56,27 +56,7 @@ const BenchPress = () => {
           />
         </div>
         <div className="py-12 px-4 container lg:py-16 lg:text-md">
-          <div className="grid grid-cols-[auto_1fr] gap-2 items-center">
-            <div className="grid w-[5.25rem] h-[5.25rem] bg-main rounded-full text-center font-bold text-white content-center text-4xl">
-              {userProfile.user?.name.substring(0, 1)}
-            </div>
-            <div>
-              <h2 className="font-bold text-lg leading-none mb-1">
-                {userProfile.user?.name}
-              </h2>
-              <p className="leading-none mb-1">
-                {userProfile.user?.memberSince.toLocaleString("en-GB", {
-                  month: "long",
-                  year: "numeric",
-                })}
-              </p>
-              {userProfile.user?.foundingMember && (
-                <div className="bg-main text-white rounded-full px-3 py-2 inline-block mt-1 leading-none text-sm">
-                  Founding Member
-                </div>
-              )}
-            </div>
-          </div>
+          <UserProfileCard />
 
           <div className="mt-7">
             <BackButton />

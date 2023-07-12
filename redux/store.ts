@@ -10,7 +10,6 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import featureToggleReducer from "./slice/featureToggle";
 import userProfileReducer from "./slice/userProfile";
 
 const persistConfig = {
@@ -19,7 +18,6 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  featureToggle: featureToggleReducer,
   userProfile: userProfileReducer,
 });
 

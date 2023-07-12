@@ -5,6 +5,7 @@ import Pill from "./Pill";
 import WorkoutCard from "./WorkoutCard";
 import BreakdownGrid from "./BreakdownGrid";
 import BackButton from "./BackButton";
+import UserProfileCard from "./UserProfileCard";
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   WorkoutCard,
   BreakdownGrid,
   BackButton,
+  UserProfileCard,
 };

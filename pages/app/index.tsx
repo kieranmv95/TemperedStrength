@@ -4,16 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useAppSelector } from "@/hooks/redux";
 import useUser from "@/hooks/useUser";
+import { UserProfileCard } from "@/components";
 
 const App = () => {
   const [gridView, setGridView] = useState<"programs" | "1rm" | "roadmap">(
     "1rm"
   );
   const { userProfile } = useUser();
-
-  const programsToggle = useAppSelector(
-    ({ featureToggle }) => featureToggle.programs
-  );
 
   if (!userProfile.user) {
     return null;
@@ -44,27 +41,7 @@ const App = () => {
           />
         </div>
         <div className="py-12 px-4 container lg:py-16 lg:text-md">
-          <div className="grid grid-cols-[auto_1fr] gap-1 items-center">
-            <div className="grid w-[5.25rem] h-[5.25rem] bg-main rounded-full text-center font-bold text-white content-center text-4xl">
-              {userProfile.user?.name.substring(0, 1)}
-            </div>
-            <div>
-              <h2 className="font-bold text-lg leading-none mb-1">
-                {userProfile.user?.name}
-              </h2>
-              <p className="leading-none mb-1">
-                {userProfile.user?.memberSince.toLocaleString("en-GB", {
-                  month: "long",
-                  year: "numeric",
-                })}
-              </p>
-              {userProfile.user?.foundingMember && (
-                <div className="bg-main text-white rounded-full px-3 py-2 inline-block mt-1 leading-none text-sm">
-                  Founding Member
-                </div>
-              )}
-            </div>
-          </div>
+          <UserProfileCard />
 
           <div className="flex gap-4 mt-7">
             <button
@@ -77,22 +54,20 @@ const App = () => {
             </button>
             <button
               className={`text-lg lg:text-3xl font-bold ${
+                gridView !== "programs" && "text-gray-400"
+              }`}
+              onClick={() => setGridView("programs")}
+            >
+              Programs
+            </button>
+            <button
+              className={`text-lg lg:text-3xl font-bold ${
                 gridView !== "roadmap" && "text-gray-400"
               }`}
               onClick={() => setGridView("roadmap")}
             >
               Roadmap
             </button>
-            {programsToggle && (
-              <button
-                className={`text-lg lg:text-3xl font-bold ${
-                  gridView !== "programs" && "text-gray-400"
-                }`}
-                onClick={() => setGridView("programs")}
-              >
-                Programs
-              </button>
-            )}
           </div>
 
           {gridView === "1rm" && (
@@ -124,6 +99,36 @@ const App = () => {
                   </Link>
                 </div>
               ))}
+              <div className="bg-gray-200 rounded-md overflow-hidden text-center items-center grid p-4">
+                <p className="font-bold">More coming soon</p>
+              </div>
+            </div>
+          )}
+
+          {gridView === "programs" && (
+            <div className="grid gap-4 mt-4 md:grid-cols-2 xl:grid-cols-3">
+              <div className="bg-main text-white rounded-md overflow-hidden">
+                <div className="p-3">
+                  <h3 className="text-xl">Big Gains on The Big 3</h3>
+                  <ul className="mt-2">
+                    <li>
+                      <span className="font-bold">Difficulty:</span> Beginner
+                    </li>
+                    <li>
+                      <span className="font-bold">Duration:</span> 10 Weeks
+                    </li>
+                    <li>
+                      <span className="font-bold">Sessions Per Week:</span> 5
+                    </li>
+                  </ul>
+                </div>
+                <Link
+                  className="bg-main-light inline-block w-full p-2 text-center"
+                  href={`/app/programs/big-gains-on-the-big-three`}
+                >
+                  Start
+                </Link>
+              </div>
               <div className="bg-gray-200 rounded-md overflow-hidden text-center items-center grid p-4">
                 <p className="font-bold">More coming soon</p>
               </div>
