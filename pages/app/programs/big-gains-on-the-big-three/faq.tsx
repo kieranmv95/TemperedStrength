@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import useUser from "@/hooks/useUser";
-import { UserProfileCard } from "@/components";
+import { BackButton, UserProfileCard } from "@/components";
+import Link from "next/link";
 
-const BigGainsOnTheBigThree = () => {
+const BigGainsOnTheBigThreeFAQ = () => {
   const { userProfile } = useUser();
 
   if (!userProfile.user) {
@@ -19,10 +20,10 @@ const BigGainsOnTheBigThree = () => {
         <div className="flex items-center justify-center bg-slate-900 text-white text-center overflow-hidden relative py-8 lg:py-0 lg:h-[20vh]">
           <div className="relative z-10">
             <h1 className="font-bold text-3xl md:text-5xl">
-              TEMPERED STRENGTH
+              Big Gains on The Big 3
             </h1>
             <p className="inline-block md:text-lg pt-2 pl-6 pr-6 mt-2 md:pt-3 md:pl-8 md:pr-8 md:mt-4 border-t">
-              Members Area
+              Get big numbers in Squat, Bench and Deadlift
             </p>
           </div>
           <Image
@@ -36,10 +37,35 @@ const BigGainsOnTheBigThree = () => {
         </div>
         <div className="py-12 px-4 container lg:py-16 lg:text-md">
           <UserProfileCard />
+
+          <div className="mt-7">
+            <BackButton />
+
+            <div className="flex gap-3 lg:gap-6 mt-5 mb-7">
+              <Link
+                href="/app/programs/big-gains-on-the-big-three"
+                className={`text-md lg:text-3xl font-bold text-gray-400`}
+              >
+                Description
+              </Link>
+              <Link
+                href="/app/programs/big-gains-on-the-big-three/program"
+                className={`text-md lg:text-3xl font-bold text-gray-400`}
+              >
+                Program
+              </Link>
+              <Link
+                href="/app/programs/big-gains-on-the-big-three/faq"
+                className={`text-md lg:text-3xl font-bold`}
+              >
+                FAQ
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
     </>
   );
 };
 
-export default BigGainsOnTheBigThree;
+export default BigGainsOnTheBigThreeFAQ;

@@ -43,9 +43,9 @@ const App = () => {
         <div className="py-12 px-4 container lg:py-16 lg:text-md">
           <UserProfileCard />
 
-          <div className="flex gap-4 mt-7">
+          <div className="flex gap-3 lg:gap-6 mt-7">
             <button
-              className={`text-lg lg:text-3xl font-bold ${
+              className={`text-md lg:text-3xl font-bold ${
                 gridView !== "1rm" && "text-gray-400"
               }`}
               onClick={() => setGridView("1rm")}
@@ -53,7 +53,7 @@ const App = () => {
               Exercises
             </button>
             <button
-              className={`text-lg lg:text-3xl font-bold ${
+              className={`text-md lg:text-3xl font-bold ${
                 gridView !== "programs" && "text-gray-400"
               }`}
               onClick={() => setGridView("programs")}
@@ -61,7 +61,7 @@ const App = () => {
               Programs
             </button>
             <button
-              className={`text-lg lg:text-3xl font-bold ${
+              className={`text-md lg:text-3xl font-bold ${
                 gridView !== "roadmap" && "text-gray-400"
               }`}
               onClick={() => setGridView("roadmap")}
